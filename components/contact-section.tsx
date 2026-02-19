@@ -54,8 +54,8 @@ export function ContactSection() {
     {
       icon: Github,
       label: 'GitHub',
-      value: 'github.com/MAtherEhsan',
-      href: 'https://github.com/MAtherEhsan',
+      value: 'github.com/MAtharEhsan',
+      href: 'https://github.com/MAtharEhsan',
     },
   ];
 

@@ -13,7 +13,7 @@ const projects = [
       'Admin dashboard for user management',
       'Poet biography management',
     ],
-    github: 'https://github.com/MAtherEhsan/HarfZaar.git',
+    github: 'https://github.com/MAtharEhsan/HarfZaar.git',
     live: 'https://harfzaad.vercel.app/',
     award: '🏆 Scored 2nd Position - Final Year Project',
   },
@@ -27,7 +27,7 @@ const projects = [
       'Cross-browser testing',
       'CI/CD integration',
     ],
-    github: 'https://github.com/MAtherEhsan/Cypress_testing_Darusslam-website.git',
+    github: 'https://github.com/MAtharEhsan/Cypress_testing_Darusslam-website.git',
   },
   {
     title: 'Travel Website',
@@ -40,7 +40,7 @@ const projects = [
       'Booking system',
       'Contact management',
     ],
-    github: 'https://github.com/MAtherEhsan/Travel-website.git',
+    github: 'https://github.com/MAtharEhsan/Travel-website.git',
   },
 ];
 

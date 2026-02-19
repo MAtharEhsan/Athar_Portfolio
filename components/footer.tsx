@@ -23,7 +23,7 @@ export function Footer() {
   ];
 
   const socialLinks = [
-    { icon: Github, href: 'https://github.com/MAtherEhsan', label: 'GitHub' },
+    { icon: Github, href: 'https://github.com/MAtharEhsan', label: 'GitHub' },
     { icon: Linkedin, href: 'https://linkedin.com/in/muhammadatharehsan', label: 'LinkedIn' },
     { icon: Mail, href: 'mailto:muhammadatharehsan2@gmail.com', label: 'Email' },
     { icon: FaWhatsapp, href: 'https://wa.me/923046000182', label: 'WhatsApp' },
