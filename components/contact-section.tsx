@@ -9,6 +9,7 @@ export function ContactSection() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    subject: '',
     message: '',
     website: '',
   });
@@ -49,7 +50,7 @@ export function ContactSection() {
         type: 'success',
         message: 'Your message was sent successfully. I will get back to you soon.',
       });
-      setFormData({ name: '', email: '', message: '', website: '' });
+      setFormData({ name: '', email: '', subject: '', message: '', website: '' });
     } catch (error) {
       const errorMessage =
         error instanceof Error
@@ -194,6 +195,25 @@ export function ContactSection() {
                   required
                   className="w-full bg-[#0B0F19] border border-[#1F2937] rounded-lg px-4 py-2 text-[#E5E7EB] placeholder-[#9CA3AF] focus:outline-none focus:border-[#38BDF8] transition-colors"
                   placeholder="Your email"
+                />
+              </div>
+
+              <div>
+                <label
+                  htmlFor="subject"
+                  className="block text-base font-medium text-[#E5E7EB] mb-2"
+                >
+                  Subject
+                </label>
+                <input
+                  type="text"
+                  id="subject"
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  required
+                  className="w-full bg-[#0B0F19] border border-[#1F2937] rounded-lg px-4 py-2 text-[#E5E7EB] placeholder-[#9CA3AF] focus:outline-none focus:border-[#38BDF8] transition-colors"
+                  placeholder="Subject"
                 />
               </div>
 
