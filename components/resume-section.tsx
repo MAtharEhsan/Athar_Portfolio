@@ -246,7 +246,7 @@ export function ResumeSection() {
                     </p>
                   </div>
                   <span className="text-[#38BDF8] font-semibold text-base bg-[#2563EB]/20 px-3 py-1 rounded">
-                    feb 2026 - Present
+                    Feb 2026 - Present
                   </span>
                 </div>
 
@@ -309,7 +309,7 @@ export function ResumeSection() {
                     </p>
                   </div>
                   <span className="text-[#38BDF8] font-semibold text-base bg-[#2563EB]/20 px-3 py-1 rounded">
-                    2023 – Present
+                    2024 – Present
                   </span>
                 </div>
 
