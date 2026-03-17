@@ -39,8 +39,8 @@ export function ResumeSection() {
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               className={`px-6 py-2 rounded-lg font-semibold transition-colors text-lg ${activeTab === tab.id
-                  ? 'bg-[#2563EB] text-[#E5E7EB]'
-                  : 'bg-[#1F2937] text-[#9CA3AF] hover:text-[#E5E7EB]'
+                ? 'bg-[#2563EB] text-[#E5E7EB]'
+                : 'bg-[#1F2937] text-[#9CA3AF] hover:text-[#E5E7EB]'
                 }`}
             >
               {tab.label}
@@ -242,11 +242,11 @@ export function ResumeSection() {
                       Associate Project Manager
                     </h3>
                     <p className="text-[#38BDF8] font-semibold text-lg">
-                      Current Role
+                      Rapidlabs.ai
                     </p>
                   </div>
                   <span className="text-[#38BDF8] font-semibold text-base bg-[#2563EB]/20 px-3 py-1 rounded">
-                    Present
+                    feb 2026 - Present
                   </span>
                 </div>
 
@@ -305,11 +305,11 @@ export function ResumeSection() {
                       Full Stack Developer
                     </h3>
                     <p className="text-[#38BDF8] font-semibold text-lg">
-                      MERN Stack Projects
+                      Remote (Part time)
                     </p>
                   </div>
                   <span className="text-[#38BDF8] font-semibold text-base bg-[#2563EB]/20 px-3 py-1 rounded">
-                    Ongoing
+                    2023 – Present
                   </span>
                 </div>
 
@@ -330,8 +330,8 @@ export function ResumeSection() {
 
             </div>
           )}
-        </div>   
-      </div>     
+        </div>
+      </div>
     </section>
   );
 }
