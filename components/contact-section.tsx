@@ -11,6 +11,11 @@ export function ContactSection() {
     email: '',
     message: '',
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: 'success' | 'error' | null;
+    message: string;
+  }>({ type: null, message: '' });
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -19,11 +24,44 @@ export function ContactSection() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Create mailto link
-    const mailtoLink = `mailto:muhammadatharehsan2@gmail.com?subject=Contact from ${formData.name}&body=${encodeURIComponent(formData.message)}`;
-    window.location.href = mailtoLink;
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: '' });
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = (await response.json()) as { message?: string };
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Failed to send message.');
+      }
+
+      setSubmitStatus({
+        type: 'success',
+        message: 'Your message was sent successfully. I will get back to you soon.',
+      });
+      setFormData({ name: '', email: '', message: '' });
+    } catch (error) {
+      const errorMessage =
+        error instanceof Error
+          ? error.message
+          : 'Something went wrong while sending your message.';
+
+      setSubmitStatus({
+        type: 'error',
+        message: errorMessage,
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
@@ -166,10 +204,21 @@ export function ContactSection() {
 
               <button
                 type="submit"
+                disabled={isSubmitting}
                 className="w-full bg-[#2563EB] text-[#E5E7EB] font-semibold py-3 rounded-lg hover:bg-[#1E40AF] transition-colors text-lg"
               >
-                Send Message
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
+
+              {submitStatus.type && (
+                <p
+                  className={`text-sm ${
+                    submitStatus.type === 'success' ? 'text-green-400' : 'text-red-400'
+                  }`}
+                >
+                  {submitStatus.message}
+                </p>
+              )}
             </form>
           </div>
         </div>
