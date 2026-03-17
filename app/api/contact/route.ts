@@ -1,6 +1,25 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
+const RATE_LIMIT_MAX_REQUESTS = 5;
+
+type RateLimitEntry = {
+  count: number;
+  windowStart: number;
+};
+
+const globalForRateLimit = globalThis as typeof globalThis & {
+  contactRateLimitStore?: Map<string, RateLimitEntry>;
+};
+
+const rateLimitStore =
+  globalForRateLimit.contactRateLimitStore ?? new Map<string, RateLimitEntry>();
+
+if (!globalForRateLimit.contactRateLimitStore) {
+  globalForRateLimit.contactRateLimitStore = rateLimitStore;
+}
+
 const REQUIRED_ENV_VARS = [
   'SMTP_HOST',
   'SMTP_PORT',
@@ -12,6 +31,49 @@ const REQUIRED_ENV_VARS = [
 
 const getMissingEnvVars = () =>
   REQUIRED_ENV_VARS.filter((key) => !process.env[key]);
+
+const getClientIp = (request: Request) => {
+  const forwardedFor = request.headers.get('x-forwarded-for');
+
+  if (forwardedFor) {
+    return forwardedFor.split(',')[0].trim();
+  }
+
+  return request.headers.get('x-real-ip')?.trim() || 'unknown';
+};
+
+const isRateLimited = (identifier: string) => {
+  const now = Date.now();
+
+  for (const [key, entry] of rateLimitStore) {
+    if (now - entry.windowStart > RATE_LIMIT_WINDOW_MS) {
+      rateLimitStore.delete(key);
+    }
+  }
+
+  const existing = rateLimitStore.get(identifier);
+
+  if (!existing) {
+    rateLimitStore.set(identifier, { count: 1, windowStart: now });
+    return false;
+  }
+
+  if (now - existing.windowStart > RATE_LIMIT_WINDOW_MS) {
+    rateLimitStore.set(identifier, { count: 1, windowStart: now });
+    return false;
+  }
+
+  if (existing.count >= RATE_LIMIT_MAX_REQUESTS) {
+    return true;
+  }
+
+  rateLimitStore.set(identifier, {
+    ...existing,
+    count: existing.count + 1,
+  });
+
+  return false;
+};
 
 export async function POST(request: Request) {
   const missingEnvVars = getMissingEnvVars();
@@ -30,7 +92,25 @@ export async function POST(request: Request) {
       name?: string;
       email?: string;
       message?: string;
+      website?: string;
     };
+
+    const honeypot = body.website?.trim();
+
+    if (honeypot) {
+      return NextResponse.json({ message: 'Message sent successfully.' });
+    }
+
+    const clientIp = getClientIp(request);
+
+    if (isRateLimited(clientIp)) {
+      return NextResponse.json(
+        {
+          message: 'Too many attempts. Please wait a few minutes before trying again.',
+        },
+        { status: 429 }
+      );
+    }
 
     const name = body.name?.trim();
     const email = body.email?.trim();
