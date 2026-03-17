@@ -38,11 +38,10 @@ export function ResumeSection() {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`px-6 py-2 rounded-lg font-semibold transition-colors text-lg ${
-                activeTab === tab.id
+              className={`px-6 py-2 rounded-lg font-semibold transition-colors text-lg ${activeTab === tab.id
                   ? 'bg-[#2563EB] text-[#E5E7EB]'
                   : 'bg-[#1F2937] text-[#9CA3AF] hover:text-[#E5E7EB]'
-              }`}
+                }`}
             >
               {tab.label}
             </button>
@@ -235,104 +234,104 @@ export function ResumeSection() {
           {activeTab === 'experience' && (
             <div className="space-y-6">
 
+              {/* Associate Project Manager */}
               <div className="bg-[#0B0F19] border border-[#1F2937] rounded-xl p-8">
                 <div className="flex items-start justify-between mb-3">
                   <div>
                     <h3 className="text-2xl font-bold text-[#E5E7EB]">
-                       SQA Intern
+                      Associate Project Manager
                     </h3>
                     <p className="text-[#38BDF8] font-semibold text-lg">
-                       Easykaam (Startup)
+                      Current Role
                     </p>
-                    </div>
-                     <span className="text-[#38BDF8] font-semibold text-base bg-[#2563EB]/20 px-3 py-1 rounded">
-                        Nov 2025 – Jan 2026
-                       </span>
-                  </div>
-
-                  <p className="text-[#9CA3AF] mb-4 text-lg">
-                    Worked as a Software Quality Assurance Intern on Easykaam’s mobile application,
-                    a platform providing household maintenance services, focusing on product stability
-                    and release quality.
-                   </p>
-                    <ul className="space-y-2">
-                     {[
-                      'Conducted manual testing of Easykaam’s mobile application',
-                      'Identified, documented, and tracked bugs to ensure high-quality releases',
-                      'Collaborated closely with developers to verify fixes',
-                      'Helped improve application stability and overall performance',
-                      ].map((responsibility, idx) => (
-                        <li key={idx} className="text-[#9CA3AF] text-lg flex items-start gap-2">
-                          <span className="text-[#38BDF8] mt-1">→</span>
-                           {responsibility}
-                        </li>
-                      ))}
-                   </ul>
-                </div>
-
-              <div className="bg-[#0B0F19] border border-[#1F2937] rounded-xl p-8">
-                <div className="flex items-start justify-between mb-3">
-                  <div>
-                    <h3 className="text-2xl font-bold text-[#E5E7EB]">
-                      Software Quality Assurance Engineer
-                    </h3>
-                    <p className="text-[#38BDF8] font-semibold text-lg">Final Year Project - HarfZaar</p>
                   </div>
                   <span className="text-[#38BDF8] font-semibold text-base bg-[#2563EB]/20 px-3 py-1 rounded">
-                    2024 – 2025
+                    Present
                   </span>
                 </div>
-                <p className="text-[#9CA3AF] mb-4 text-lg">
-                  Led quality assurance efforts for HarfZaar, an AI-powered poetry platform. Implemented comprehensive testing strategies and ensured software quality across multiple features.
-                </p>
+
                 <ul className="space-y-2">
                   {[
-                    'Designed and executed comprehensive test plans',
-                    'Automated testing workflows using modern tools',
-                    'Collaborated with development team on quality improvements',
-                    'Achieved 2nd position in final year project competition',
-                  ].map((responsibility, idx) => (
+                    'Managing multiple project workstreams, ensuring timely delivery',
+                    'Coordinating cross-functional teams for smooth execution',
+                    'Monitoring timelines, deliverables, and dependencies',
+                    'Leading planning, scheduling, and resource coordination',
+                    'Reporting project progress and KPIs to stakeholders',
+                  ].map((item, idx) => (
                     <li key={idx} className="text-[#9CA3AF] text-lg flex items-start gap-2">
                       <span className="text-[#38BDF8] mt-1">→</span>
-                      {responsibility}
+                      {item}
                     </li>
                   ))}
                 </ul>
               </div>
 
+              {/* SQA Intern */}
+              <div className="bg-[#0B0F19] border border-[#1F2937] rounded-xl p-8">
+                <div className="flex items-start justify-between mb-3">
+                  <div>
+                    <h3 className="text-2xl font-bold text-[#E5E7EB]">
+                      SQA Intern
+                    </h3>
+                    <p className="text-[#38BDF8] font-semibold text-lg">
+                      Easykaam (Startup)
+                    </p>
+                  </div>
+                  <span className="text-[#38BDF8] font-semibold text-base bg-[#2563EB]/20 px-3 py-1 rounded">
+                    Nov 2025 – Jan 2026
+                  </span>
+                </div>
+
+                <ul className="space-y-2">
+                  {[
+                    'Conducted manual testing of mobile application',
+                    'Identified and tracked bugs for quality releases',
+                    'Collaborated with developers to verify fixes',
+                    'Improved application stability and performance',
+                  ].map((item, idx) => (
+                    <li key={idx} className="text-[#9CA3AF] text-lg flex items-start gap-2">
+                      <span className="text-[#38BDF8] mt-1">→</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Full Stack Developer */}
               <div className="bg-[#0B0F19] border border-[#1F2937] rounded-xl p-8">
                 <div className="flex items-start justify-between mb-3">
                   <div>
                     <h3 className="text-2xl font-bold text-[#E5E7EB]">
                       Full Stack Developer
                     </h3>
-                    <p className="text-[#38BDF8] font-semibold text-lg">MERN Stack Projects</p>
+                    <p className="text-[#38BDF8] font-semibold text-lg">
+                      MERN Stack Projects
+                    </p>
                   </div>
                   <span className="text-[#38BDF8] font-semibold text-base bg-[#2563EB]/20 px-3 py-1 rounded">
                     Ongoing
                   </span>
                 </div>
-                <p className="text-[#9CA3AF] mb-4 text-lg">
-                  Developed full-stack applications using the MERN stack, with focus on responsive UI, efficient backend architecture, and user-centric design.
-                </p>
+
                 <ul className="space-y-2">
                   {[
-                    'Built responsive web applications with React',
-                    'Developed scalable backend services with Node.js & Express',
-                    'Implemented database solutions with MongoDB',
-                    'Integrated AI/ML features (TensorFlow, Python)',
-                  ].map((responsibility, idx) => (
+                    'Built responsive web applications using React',
+                    'Developed backend services with Node.js & Express',
+                    'Designed and managed MongoDB databases',
+                    'Integrated AI/ML features using Python',
+                  ].map((item, idx) => (
                     <li key={idx} className="text-[#9CA3AF] text-lg flex items-start gap-2">
                       <span className="text-[#38BDF8] mt-1">→</span>
-                      {responsibility}
+                      {item}
                     </li>
                   ))}
                 </ul>
               </div>
+
             </div>
           )}
-        </div>
-      </div>
+        </div>   
+      </div>     
     </section>
   );
 }
