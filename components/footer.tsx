@@ -52,8 +52,8 @@ export function Footer() {
               </h4>
               <p className="text-base text-[#9CA3AF]">
                 <span className="block mb-1">Full Stack Developer |</span>
-                <span className="block mb-1">SQA Engineer |</span>
-                <span className="block">Project Manager</span>
+                <span className="block mb-1">Project Manager|</span>
+                <span className="block">SQA Engineer</span>
               </p>
             </div>
           </div>
