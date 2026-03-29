@@ -1,45 +1,26 @@
-import { ExternalLink, Github, Globe } from 'lucide-react';
+import { Github, Globe } from 'lucide-react';
 
 const projects = [
   {
-    title: 'HarfZaar',
+    title: 'HarfZaar - FYP (2nd Position)',
     description:
-      'AI-powered poetry platform allowing readers and poets to discover, share, and learn poetry. Includes voice/image/text search, interactive learning games, and poetry tips.',
-    technologies: ['React', 'Node.js', 'Express', 'TensorFlow', 'Python'],
-    features: [
-      'User registration (reader/poet)',
-      'AI-based multi-modal search',
-      'Interactive poetry learning games',
-      'Admin dashboard for user management',
-      'Poet biography management',
-    ],
+      'HarfZaar is a full-stack MERN web application for Urdu poetry enthusiasts. Users can submit, discover, and engage with poetry. The platform features an AI-powered multi-modal search supporting text, voice, and image queries, interactive gamified learning modules, and real-time community engagement to boost retention.',
+    technologies: ['React', 'Node.js', 'Express', 'TensorFlow', 'JavaScript', 'Python'],
     github: 'https://github.com/MAtharEhsan/HarfZaar.git',
     live: 'https://harfzaad.vercel.app/',
-    award: '🏆 Scored 2nd Position - Final Year Project',
   },
   {
-    title: 'Darussalam Automation',
+    title: 'Darussalam Website - Automation Testing',
     description:
-      'Comprehensive automated testing suite for Darussalam web application using modern testing tools.',
-    technologies: ['Cypress', 'Selenium', 'JavaScript'],
-    features: [
-      'End-to-end test automation',
-      'Cross-browser testing',
-      'CI/CD integration',
-    ],
+      'Developed a comprehensive automation testing suite for the Darussalam web application. Implemented end-to-end test automation, cross-browser testing, and CI/CD integration, significantly reducing manual regression efforts and improving defect detection coverage across environments.',
+    technologies: ['Cypress', 'Selenium'],
     github: 'https://github.com/MAtharEhsan/Cypress_testing_Darusslam-website.git',
   },
   {
-    title: 'Travel Website',
+    title: 'Travel Website - Responsive Frontend Design',
     description:
-      'Responsive travel booking platform with comprehensive service packages and booking functionality.',
-    technologies: ['HTML', 'CSS', 'JavaScript'],
-    features: [
-      'Responsive design',
-      'Service & package listings',
-      'Booking system',
-      'Contact management',
-    ],
+      'Built a fully responsive travel booking website with dynamic UI components, smooth navigation, and optimized layouts for desktop, tablet, and mobile. Users can explore services, book tickets, and contact support seamlessly.',
+    technologies: ['HTML', 'CSS', 'JavaScript', 'Bootstrap'],
     github: 'https://github.com/MAtharEhsan/Travel-website.git',
   },
 ];
@@ -49,10 +30,10 @@ export function ProjectsSection() {
     <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <span className="inline-block text-base uppercase tracking-widest text-[#38BDF8] font-semibold mb-2">
-          Check these out on my github
+          <span className="inline-block text-base uppercase tracking-widest text-[#4C1D95] font-semibold mb-2">
+            Check these out on my GitHub
           </span>
-<h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#E5E7EB] mb-4">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#E5E7EB] mb-4">
             My Projects
           </h2>
           <p className="text-[#9CA3AF] text-xl max-w-2xl mx-auto">
@@ -64,60 +45,35 @@ export function ProjectsSection() {
           {projects.map((project, index) => (
             <div
               key={index}
-              className="bg-[#111827] border border-[#1F2937] rounded-xl p-8 hover:border-[#38BDF8] transition-colors"
+              className="bg-[#111827] border border-[#1F2937] rounded-xl p-8 hover:border-[#4C1D95] transition-colors"
             >
               <div className="flex flex-col lg:flex-row justify-between items-start gap-6">
                 <div className="flex-1">
-                  <div className="flex items-center gap-3 mb-3">
-                  <h3 className="text-3xl font-bold text-[#E5E7EB]">
-                    {project.title}
-                  </h3>
-                    {project.award && (
-                      <span className="text-base bg-[#2563EB]/20 text-[#38BDF8] px-3 py-1 rounded-full">
-                        {project.award}
-                      </span>
-                    )}
-                  </div>
+                  <h3 className="text-3xl font-bold text-[#E5E7EB] mb-3">{project.title}</h3>
 
-                  <p className="text-[#9CA3AF] mb-4 leading-relaxed text-lg">
-                    {project.description}
-                  </p>
+                  <p className="text-[#9CA3AF] mb-4 leading-relaxed text-lg">{project.description}</p>
 
                   <div className="mb-4">
-                    <p className="text-base font-semibold text-[#E5E7EB] mb-2">
-                      Key Features:
-                    </p>
-                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                      {project.features.map((feature, idx) => (
-                        <li
+                    <p className="text-base font-semibold text-[#E5E7EB] mb-2">Build using:</p>
+                    <div className="flex flex-wrap gap-2">
+                      {project.technologies.map((tech, idx) => (
+                        <span
                           key={idx}
-                          className="text-[#9CA3AF] text-base flex items-start gap-2"
+                          className="bg-[#4C1D95]/20 text-[#4C1D95] px-3 py-1 rounded-full text-base"
                         >
-                          <span className="text-[#38BDF8] mt-1">•</span>
-                          {feature}
-                        </li>
+                          {tech}
+                        </span>
                       ))}
-                    </ul>
+                    </div>
                   </div>
 
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.technologies.map((tech, idx) => (
-                      <span
-                        key={idx}
-                        className="bg-[#2563EB]/20 text-[#38BDF8] px-3 py-1 rounded-full text-base"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="flex flex-wrap gap-3">
+                  <div className="flex flex-wrap gap-3 mt-4">
                     {project.live && (
                       <a
                         href={project.live}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-4 py-2 bg-[#38BDF8] text-[#0B0F19] rounded-lg hover:bg-[#2563EB] transition-colors font-semibold"
+                        className="inline-flex items-center gap-2 px-4 py-2 bg-[#4C1D95] text-[#E5E7EB] rounded-lg hover:bg-[#371875] transition-colors font-semibold"
                       >
                         <Globe size={18} />
                         View Live

@@ -77,13 +77,12 @@ export function HeroSection() {
 
               {/* Paragraph */}
               <p className="text-[#9CA3AF] text-lg max-w-xl leading-snug text-justify">
-                Passionate Software Engineer with expertise in both development
-                and quality assurance. Skilled in MERN stack development and 
-                experienced with automation and manual testing using tools such 
-                as Selenium and Cypress. Committed to delivering high-quality,
-                reliable software through meticulous testing and efficient development
-                practices. Strong problem-solving abilities and attention to detail
-                ensure robust, scalable, and maintainable solutions.
+                Experienced Software Engineer and Associate Project Manager with expertise in delivering complex,
+                high-impact projects on time. Skilled at leading cross-functional teams, translating technical
+                requirements into actionable roadmaps, and maintaining clear stakeholder alignment. A disciplined Agile
+                practitioner across the full sprint lifecycle from planning and backlog grooming to risk mitigation and
+                retrospectives. Brings hands-on expertise in test automation (Cypress, Selenium, Playwright) and
+                full-stack MERN development, building scalable, production-ready applications from the ground up.
               </p>
             </div>
 
@@ -133,7 +132,7 @@ export function HeroSection() {
           {/* Right Side - Profile Image */}
           <div className="flex justify-start md:pl-12 lg:pl-9">
             <div className="relative w-[19rem] sm:w-[23rem] md:w-[30rem] h-100 sm:h-110 md:h-[40rem] rounded-2xl overflow-hidden border border-[#2563EB]/30">
-                <img
+              <img
                 src="/profile-placeholder.png"
                 alt="Profile"
                 className="w-full h-full object-cover"
