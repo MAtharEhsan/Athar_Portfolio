@@ -11,9 +11,10 @@ export function HeroSection() {
   const typingSpeed = 100;
 
   const titles = [
-    'Software Quality Assurance Engineer',
-    'Full Stack Developer',
-    'Project Manager',
+    "Software Engineer",
+    "Associate Project Manager",
+    "Software Quality Assurance Engineer",
+    "Full Stack Developer",
   ];
 
   const socialLinks = [

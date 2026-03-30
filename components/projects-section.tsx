@@ -54,12 +54,12 @@ export function ProjectsSection() {
                   <p className="text-[#9CA3AF] mb-4 leading-relaxed text-lg">{project.description}</p>
 
                   <div className="mb-4">
-                    <p className="text-base font-semibold text-[#E5E7EB] mb-2">Build using:</p>
+                    <p className="text-base font-semibold text-[#E5E7EB] mb-2">Built using:</p>
                     <div className="flex flex-wrap gap-2">
                       {project.technologies.map((tech, idx) => (
                         <span
                           key={idx}
-                          className="bg-[#4C1D95]/20 text-[#4C1D95] px-3 py-1 rounded-full text-base"
+                          className="bg-[#4C1D95]/20 text-[#E5E7EB] px-3 py-1 rounded-full text-base"
                         >
                           {tech}
                         </span>
