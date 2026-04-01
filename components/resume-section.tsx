@@ -266,7 +266,7 @@ export function ResumeSection() {
                 </ul>
               </div>
 
-              {/* SQA Intern */}
+              {/* SQA Engineer */}
               <div className="bg-[#0B0F19] border border-[#1F2937] rounded-xl p-8">
                 <div className="flex items-start justify-between mb-3">
                   <div>
