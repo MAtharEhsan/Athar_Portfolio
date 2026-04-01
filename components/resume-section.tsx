@@ -271,7 +271,7 @@ export function ResumeSection() {
                 <div className="flex items-start justify-between mb-3">
                   <div>
                     <h3 className="text-2xl font-bold text-[#E5E7EB]">
-                      SQA Intern
+                      SQA Engineer
                     </h3>
                     <p className="text-[#38BDF8] font-semibold text-lg">
                       Easykaam (Startup)
