@@ -278,7 +278,7 @@ export function ResumeSection() {
                     </p>
                   </div>
                   <span className="text-[#38BDF8] font-semibold text-base bg-[#2563EB]/20 px-3 py-1 rounded">
-                    Oct 2025 – Dec 2025
+                    Feb 2026 – Apr 2026
                   </span>
                 </div>
 
