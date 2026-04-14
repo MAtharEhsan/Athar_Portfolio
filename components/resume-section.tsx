@@ -266,6 +266,41 @@ export function ResumeSection() {
                 </ul>
               </div>
 
+              {/* SQA Automation Engineer */}
+              <div className="bg-[#0B0F19] border border-[#1F2937] rounded-xl p-8">
+                <div className="flex items-start justify-between mb-3">
+                  <div>
+                    <h3 className="text-2xl font-bold text-[#E5E7EB]">
+                      SQA Automation Engineer
+                    </h3>
+                    <p className="text-[#38BDF8] font-semibold text-lg">
+                      Techfy (Remote, Internship)
+                    </p>
+                  </div>
+                  <span className="text-[#38BDF8] font-semibold text-base bg-[#2563EB]/20 px-3 py-1 rounded">
+                    Oct 2025 – Dec 2025
+                  </span>
+                </div>
+
+                <ul className="space-y-2">
+                  {[
+                    'Built and maintained an end-to-end Playwright + TypeScript automation suite for a Click2Deploy platform.',
+                    'Automated critical workflows including login, build, deployment, backup, and restore.',
+                    'Designed a scalable framework using reusable page objects, fixtures, and utilities, improving maintainability.',
+                    'Implemented custom PDF/HTML reporting to enhance test result visibility for stakeholders.',
+                    'Increased regression reliability by developing stable, environment-aware test flows for key deployment paths.',
+                    'Improved QA efficiency by standardizing test execution and reducing manual validation efforts.',
+                    'Delivered a production-grade test architecture aligned with CI/CD quality goals and release confidence.',
+                  ].map((item, idx) => (
+                    <li key={idx} className="text-[#9CA3AF] text-lg flex items-start gap-2">
+                      <span className="text-[#38BDF8] mt-1">→</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+
               {/* SQA Engineer */}
               <div className="bg-[#0B0F19] border border-[#1F2937] rounded-xl p-8">
                 <div className="flex items-start justify-between mb-3">
