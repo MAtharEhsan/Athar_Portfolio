@@ -274,7 +274,7 @@ export function ResumeSection() {
                       SQA Automation Engineer
                     </h3>
                     <p className="text-[#38BDF8] font-semibold text-lg">
-                      Techfy (Remote, Internship)
+                      Techfy (Remote)
                     </p>
                   </div>
                   <span className="text-[#38BDF8] font-semibold text-base bg-[#2563EB]/20 px-3 py-1 rounded">
