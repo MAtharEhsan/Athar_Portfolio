@@ -9,7 +9,7 @@ const features = [
   {
     icon: Zap,
     title: 'Test Automation',
-    description: 'Skilled in Cypress and Selenium for comprehensive automated testing solutions.',
+    description: 'Building scalable Playwright, Cypress, and Selenium suites for reliable regression testing.',
   },
   {
     icon: Code2,
@@ -18,8 +18,8 @@ const features = [
   },
   {
     icon: GitBranch,
-    title: 'CI/CD & DevOps',
-    description: 'Understanding of DevOps practices and continuous integration/deployment pipelines.',
+    title: 'API & Cross-Browser Testing',
+    description: 'Validating REST APIs with Postman and ensuring consistent behavior across browsers.',
   },
   {
     icon: Users,

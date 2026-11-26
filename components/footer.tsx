@@ -51,9 +51,9 @@ export function Footer() {
                 M Athar Ehsan
               </h4>
               <p className="text-base text-[#9CA3AF]">
-                <span className="block mb-1">Full Stack Developer |</span>
-                <span className="block mb-1">Project Manager|</span>
-                <span className="block">SQA Engineer</span>
+                <span className="block mb-1">Software Engineer</span>
+                <span className="block mb-1">SQA Engineer</span>
+                <span className="block">Full Stack Developer</span>
               </p>
             </div>
           </div>

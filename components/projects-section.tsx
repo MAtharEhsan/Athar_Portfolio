@@ -20,12 +20,14 @@ const projects = [
   {
     title: 'Darussalam Website',
     description:
-      'Comprehensive automated testing suite for Darussalam web application using modern testing tools.',
+      'End-to-end test automation framework covering authentication, search, cart, and checkout flows.',
     technologies: ['Cypress', 'Selenium', 'JavaScript'],
     features: [
       'End-to-end test automation',
       'Cross-browser testing',
-      'CI/CD integration',
+      'Reusable custom Cypress commands',
+      'API response mocking',
+      'Expanded defect detection coverage',
     ],
     github: 'https://github.com/MAtharEhsan/Cypress_testing_Darusslam-website.git',
     award: 'Automation Testing',
@@ -33,8 +35,8 @@ const projects = [
   {
     title: 'Travel Website',
     description:
-      'Responsive travel booking platform with comprehensive service packages and booking functionality.',
-    technologies: ['HTML', 'CSS', 'JavaScript'],
+      'Responsive travel booking platform with interactive destination cards and optimized mobile layouts.',
+    technologies: ['HTML', 'CSS', 'JavaScript', 'Bootstrap'],
     features: [
       'Responsive design',
       'Service & package listings',

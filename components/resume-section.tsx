@@ -175,39 +175,39 @@ export function ResumeSection() {
                 {
                   category: 'Languages',
                   items: [
-                    'HTML',
-                    'CSS',
+                    'HTML5',
+                    'CSS3',
                     'JavaScript',
                     'Python',
-                    'Java',
-                    'C++',
                   ],
                 },
                 {
                   category: 'QA & Testing',
-                  items: ['Cypress', 'Selenium', 'Manual Testing', 'Test Automation'],
+                  items: ['Playwright', 'Cypress', 'Selenium', 'Manual Testing', 'Test Automation', 'Postman', 'API Testing', 'Cross-Browser Testing'],
                 },
                 {
                   category: 'Full Stack',
                   items: [
                     'React',
                     'Node.js',
-                    'Express',
+                    'Express.js',
                     'MongoDB',
                     'MERN Stack',
+                    'RESTful APIs',
                   ],
                 },
                 {
                   category: 'Tools & Platforms',
-                  items: ['Git', 'GitHub', 'DevOps Basics', 'CI/CD'],
+                  items: ['Git', 'GitHub', 'Jira', 'Trello', 'ClickUp'],
                 },
                 {
                   category: 'Soft Skills',
                   items: [
-                    'Problem Solving',
-                    'Team Collaboration',
-                    'Project Management',
-                    'Communication',
+                    'Agile / Scrum',
+                    'Risk Management',
+                    'KPI Reporting',
+                    'Sprint Planning',
+                    'Stakeholder Management',
                   ],
                 },
               ].map((skillGroup, idx) => (
@@ -234,29 +234,59 @@ export function ResumeSection() {
           {activeTab === 'experience' && (
             <div className="space-y-6">
 
-              {/* Associate Project Manager */}
+              {/* Oak Street Technologies */}
               <div className="bg-[#0B0F19] border border-[#1F2937] rounded-xl p-8">
                 <div className="flex items-start justify-between mb-3">
                   <div>
                     <h3 className="text-2xl font-bold text-[#E5E7EB]">
-                      Associate Project Manager
+                      SQA Engineer
                     </h3>
                     <p className="text-[#38BDF8] font-semibold text-lg">
-                      Rapidlabs.ai
+                      Oak Street Technologies
                     </p>
                   </div>
                   <span className="text-[#38BDF8] font-semibold text-base bg-[#2563EB]/20 px-3 py-1 rounded">
-                    Feb 2026 - Present
+                    Oct 2026 – Present
                   </span>
                 </div>
 
                 <ul className="space-y-2">
                   {[
-                    'Managing multiple project workstreams, ensuring timely delivery',
-                    'Coordinating cross-functional teams for smooth execution',
-                    'Monitoring timelines, deliverables, and dependencies',
-                    'Leading planning, scheduling, and resource coordination',
-                    'Reporting project progress and KPIs to stakeholders',
+                    'Designing and executing functional and regression test cases to safeguard release quality.',
+                    'Logging, tracking, and retesting defects in partnership with developers.',
+                    'Testing APIs with Postman and verifying response accuracy and error handling.',
+                  ].map((item, idx) => (
+                    <li key={idx} className="text-[#9CA3AF] text-lg flex items-start gap-2">
+                      <span className="text-[#38BDF8] mt-1">→</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* RapidLabs.ai */}
+              <div className="bg-[#0B0F19] border border-[#1F2937] rounded-xl p-8">
+                <div className="flex items-start justify-between mb-3">
+                  <div>
+                    <h3 className="text-2xl font-bold text-[#E5E7EB]">
+                      Jr. Software Engineer
+                    </h3>
+                    <p className="text-[#38BDF8] font-semibold text-lg">
+                      RapidLabs.ai
+                    </p>
+                  </div>
+                  <span className="text-[#38BDF8] font-semibold text-base bg-[#2563EB]/20 px-3 py-1 rounded">
+                    Feb 2026 – Sep 2026
+                  </span>
+                </div>
+
+                <ul className="space-y-2">
+                  {[
+                    'Coordinated engineering workstreams and aligned execution with product goals and delivery timelines.',
+                    'Streamlined collaboration across development, QA, and design teams to reduce bottlenecks.',
+                    'Identified risks and dependencies early and applied mitigation strategies to prevent delays.',
+                    'Facilitated Agile ceremonies and maintained a stakeholder-focused prioritized backlog.',
+                    'Built KPI dashboards and progress reports to support data-driven decisions.',
                   ].map((item, idx) => (
                     <li key={idx} className="text-[#9CA3AF] text-lg flex items-start gap-2">
                       <span className="text-[#38BDF8] mt-1">→</span>
@@ -284,13 +314,11 @@ export function ResumeSection() {
 
                 <ul className="space-y-2">
                   {[
-                    'Built and maintained an end-to-end Playwright + TypeScript automation suite for a Click2Deploy platform.',
-                    'Automated critical workflows including login, build, deployment, backup, and restore.',
-                    'Designed a scalable framework using reusable page objects, fixtures, and utilities, improving maintainability.',
-                    'Implemented custom PDF/HTML reporting to enhance test result visibility for stakeholders.',
-                    'Increased regression reliability by developing stable, environment-aware test flows for key deployment paths.',
-                    'Improved QA efficiency by standardizing test execution and reducing manual validation efforts.',
-                    'Delivered a production-grade test architecture aligned with CI/CD quality goals and release confidence.',
+                    'Built and maintained an end-to-end test automation suite for the Click2Deploy platform using Playwright and TypeScript.',
+                    'Automated authentication, deployment, backup, and restore workflows.',
+                    'Designed reusable page objects and utilities for a scalable, maintainable test architecture.',
+                    'Implemented custom reporting to give stakeholders clearer visibility into test results.',
+                    'Strengthened regression stability and reduced manual QA effort through reliable automation.',
                   ].map((item, idx) => (
                     <li key={idx} className="text-[#9CA3AF] text-lg flex items-start gap-2">
                       <span className="text-[#38BDF8] mt-1">→</span>
@@ -300,16 +328,15 @@ export function ResumeSection() {
                 </ul>
               </div>
 
-
-              {/* SQA Engineer */}
+              {/* Software Quality Assurance Intern */}
               <div className="bg-[#0B0F19] border border-[#1F2937] rounded-xl p-8">
                 <div className="flex items-start justify-between mb-3">
                   <div>
                     <h3 className="text-2xl font-bold text-[#E5E7EB]">
-                      SQA Engineer
+                      Software Quality Assurance Intern
                     </h3>
                     <p className="text-[#38BDF8] font-semibold text-lg">
-                      Easykaam (Startup)
+                      Easykaam
                     </p>
                   </div>
                   <span className="text-[#38BDF8] font-semibold text-base bg-[#2563EB]/20 px-3 py-1 rounded">
@@ -319,41 +346,10 @@ export function ResumeSection() {
 
                 <ul className="space-y-2">
                   {[
-                    'Conducted manual testing of mobile application',
-                    'Identified and tracked bugs for quality releases',
-                    'Collaborated with developers to verify fixes',
-                    'Improved application stability and performance',
-                  ].map((item, idx) => (
-                    <li key={idx} className="text-[#9CA3AF] text-lg flex items-start gap-2">
-                      <span className="text-[#38BDF8] mt-1">→</span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Full Stack Developer */}
-              <div className="bg-[#0B0F19] border border-[#1F2937] rounded-xl p-8">
-                <div className="flex items-start justify-between mb-3">
-                  <div>
-                    <h3 className="text-2xl font-bold text-[#E5E7EB]">
-                      Full Stack Developer
-                    </h3>
-                    <p className="text-[#38BDF8] font-semibold text-lg">
-                      Remote (Part time)
-                    </p>
-                  </div>
-                  <span className="text-[#38BDF8] font-semibold text-base bg-[#2563EB]/20 px-3 py-1 rounded">
-                    2024 – Present
-                  </span>
-                </div>
-
-                <ul className="space-y-2">
-                  {[
-                    'Built responsive web applications using React',
-                    'Developed backend services with Node.js & Express',
-                    'Designed and managed MongoDB databases',
-                    'Integrated AI/ML features using Python',
+                    'Performed structured manual testing on a live mobile app and validated functional requirements.',
+                    'Designed, documented, and executed test cases for critical user flows.',
+                    'Worked with developers to reproduce, triage, and verify defect fixes.',
+                    'Improved release quality and defect containment through systematic testing.',
                   ].map((item, idx) => (
                     <li key={idx} className="text-[#9CA3AF] text-lg flex items-start gap-2">
                       <span className="text-[#38BDF8] mt-1">→</span>

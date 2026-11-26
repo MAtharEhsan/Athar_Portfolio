@@ -12,7 +12,6 @@ export function HeroSection() {
 
   const titles = [
     "Software Engineer",
-    "Associate Project Manager",
     "Software Quality Assurance Engineer",
     "Full Stack Developer",
   ];
@@ -27,8 +26,8 @@ export function HeroSection() {
   const techStack = [
     { name: 'React', icon: '⚛️' },
     { name: 'Node.js', icon: '🟢' },
-    { name: 'MongoDB', icon: '🍃' },
-    { name: 'TypeScript', icon: '📘' },
+    { name: 'Playwright', icon: '🎭' },
+    { name: 'Postman', icon: '📮' },
   ];
 
   useEffect(() => {
@@ -78,12 +77,11 @@ export function HeroSection() {
 
               {/* Paragraph */}
               <p className="text-[#9CA3AF] text-lg max-w-xl leading-snug text-justify">
-                Experienced Software Engineer and Associate Project Manager with expertise in delivering complex,
-                high-impact projects on time. Skilled at leading cross-functional teams, translating technical
-                requirements into actionable roadmaps, and maintaining clear stakeholder alignment. A disciplined Agile
-                practitioner across the full sprint lifecycle from planning and backlog grooming to risk mitigation and
-                retrospectives. Brings hands-on expertise in test automation (Cypress, Selenium, Playwright) and
-                full-stack MERN development, building scalable, production-ready applications from the ground up.
+                SQA Engineer with a software engineering background and hands-on experience in manual and automated
+                testing using Playwright, Cypress, and Selenium. Skilled in test-case design, functional and regression
+                testing, API testing with Postman, and defect tracking. Experienced in building end-to-end test automation
+                suites with TypeScript and reusable page objects, alongside MERN Stack development and Agile practices
+                for delivering reliable, high-quality software.
               </p>
             </div>
 
