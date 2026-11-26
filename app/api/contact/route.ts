@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { isValidContactEmail, isValidContactName } from '@/lib/contact-validation';
 
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
 const RATE_LIMIT_MAX_REQUESTS = 5;
@@ -88,14 +89,18 @@ export async function POST(request: Request) {
   }
 
   try {
-    const body = (await request.json()) as {
-      name?: string;
-      email?: string;
-      message?: string;
-      website?: string;
-    };
+    const parsedBody: unknown = await request.json();
 
-    const honeypot = body.website?.trim();
+    if (!parsedBody || typeof parsedBody !== 'object' || Array.isArray(parsedBody)) {
+      return NextResponse.json(
+        { message: 'Please send valid contact form data.' },
+        { status: 400 }
+      );
+    }
+
+    const body = parsedBody as Record<string, unknown>;
+
+    const honeypot = typeof body.website === 'string' ? body.website.trim() : '';
 
     if (honeypot) {
       return NextResponse.json({ message: 'Message sent successfully.' });
@@ -112,13 +117,27 @@ export async function POST(request: Request) {
       );
     }
 
-    const name = body.name?.trim();
-    const email = body.email?.trim();
-    const message = body.message?.trim();
+    const name = typeof body.name === 'string' ? body.name.trim() : '';
+    const email = typeof body.email === 'string' ? body.email.trim() : '';
+    const message = typeof body.message === 'string' ? body.message.trim() : '';
 
     if (!name || !email || !message) {
       return NextResponse.json(
         { message: 'Please fill in name, email, and message.' },
+        { status: 400 }
+      );
+    }
+
+    if (!isValidContactName(name)) {
+      return NextResponse.json(
+        { message: 'Please enter a valid name using letters.' },
+        { status: 400 }
+      );
+    }
+
+    if (!isValidContactEmail(email)) {
+      return NextResponse.json(
+        { message: 'Enter a valid email address like abc@xyz.com.' },
         { status: 400 }
       );
     }

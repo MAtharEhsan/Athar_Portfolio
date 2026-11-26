@@ -1043,6 +1043,10 @@ textarea {
   font-weight: 600;
 }
 
+.required-mark {
+  color: #ffd1d1;
+}
+
 .contact-form input,
 .contact-form textarea {
   width: 100%;
@@ -1063,6 +1067,34 @@ textarea {
   resize: vertical;
 }
 
+.message-input-wrap {
+  position: relative;
+}
+
+.message-input-wrap textarea {
+  padding-bottom: 38px;
+}
+
+.message-suggestion {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  max-width: calc(100% - 20px);
+  padding: 3px 7px;
+  border: 0;
+  border-radius: 6px;
+  background: #2a1260;
+  color: #d9ccfa;
+  cursor: pointer;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.message-suggestion:hover {
+  background: #4c1d95;
+  color: #fff;
+}
+
 .contact-form input::placeholder,
 .contact-form textarea::placeholder {
   color: #d9ccfa;
@@ -1074,6 +1106,17 @@ textarea {
   border-color: #fff;
   outline: 2px solid #fff;
   outline-offset: 2px;
+}
+
+.contact-form input[aria-invalid='true'],
+.contact-form textarea[aria-invalid='true'] {
+  border-color: #ffd1d1;
+}
+
+.field-error {
+  margin: 6px 0 0;
+  color: #ffd1d1;
+  font-size: 13px;
 }
 
 .contact-submit {
