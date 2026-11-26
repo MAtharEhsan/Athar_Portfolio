@@ -1,142 +1,105 @@
-'use client';
+import Image from 'next/image';
+import { Check, Github, Linkedin, Mail } from 'lucide-react';
 
-import { useEffect, useState } from 'react';
-import { Github, Linkedin, Mail } from 'lucide-react';
-import { FaWhatsapp } from "react-icons/fa";
+const socialLinks = [
+  { label: 'GitHub', href: 'https://github.com/MAtharEhsan', icon: Github },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/muhammadatharehsan', icon: Linkedin },
+  { label: 'Email', href: 'mailto:muhammadatharehsan2@gmail.com', icon: Mail },
+];
 
 export function HeroSection() {
-  const [titleIndex, setTitleIndex] = useState(0);
-  const [displayedText, setDisplayedText] = useState('');
-  const [isDeleting, setIsDeleting] = useState(false);
-  const typingSpeed = 100;
-
-  const titles = [
-    "Software Engineer",
-    "Software Quality Assurance Engineer",
-    "Full Stack Developer",
-  ];
-
-  const socialLinks = [
-    { icon: Github, href: 'https://github.com/MAtharEhsan', label: 'GitHub' },
-    { icon: Linkedin, href: 'https://linkedin.com/in/muhammadatharehsan', label: 'LinkedIn' },
-    { icon: Mail, href: 'mailto:muhammadatharehsan2@gmail.com', label: 'Email' },
-    { icon: FaWhatsapp, href: 'https://wa.me/923046000182', label: 'WhatsApp' },
-  ];
-
-  const techStack = [
-    { name: 'React', icon: '⚛️' },
-    { name: 'Node.js', icon: '🟢' },
-    { name: 'Playwright', icon: '🎭' },
-    { name: 'Postman', icon: '📮' },
-  ];
-
-  useEffect(() => {
-    const currentTitle = titles[titleIndex];
-    let timeoutId: NodeJS.Timeout | undefined;
-
-    if (!isDeleting && displayedText === currentTitle) {
-      timeoutId = setTimeout(() => setIsDeleting(true), 2000);
-    } else if (isDeleting && displayedText === '') {
-      setIsDeleting(false);
-      setTitleIndex((prev) => (prev + 1) % titles.length);
-    } else {
-      timeoutId = setTimeout(() => {
-        setDisplayedText((prev) =>
-          isDeleting
-            ? prev.slice(0, -1)
-            : currentTitle.slice(0, prev.length + 1)
-        );
-      }, isDeleting ? 50 : typingSpeed);
-    }
-
-    return () => {
-      if (timeoutId) clearTimeout(timeoutId);
-    };
-  }, [displayedText, isDeleting, titleIndex]);
-
   return (
-    <section id="home" className="pt-32 pb-16 px-6 sm:px-8 lg:px-16">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
-          <div className="space-y-8">
-            <div className="space-y-0">
-              {/* Name in 2 lines */}
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-[#E5E7EB] leading-tight">
-                <span className="block" >Hi, I'm </span>
-                <span className="block text-[#38BDF8]">M Athar Ehsan</span>
-              </h1>
+    <section className="section hero-section" id="home">
+      <div className="hero-background" aria-hidden="true">
+        <div className="hero-dot-grid" />
+        <div className="hero-glow hero-glow--first" />
+        <div className="hero-glow hero-glow--second" />
+        <div className="hero-waves">
+          <svg className="hero-wave hero-wave--first" viewBox="0 0 2400 160" preserveAspectRatio="none">
+            <path
+              d="M0 80Q150 30 300 80T600 80T900 80T1200 80T1500 80T1800 80T2100 80T2400 80"
+              vectorEffect="non-scaling-stroke"
+            />
+          </svg>
+          <svg className="hero-wave hero-wave--second" viewBox="0 0 2400 160" preserveAspectRatio="none">
+            <path
+              d="M0 105Q150 65 300 105T600 105T900 105T1200 105T1500 105T1800 105T2100 105T2400 105"
+              vectorEffect="non-scaling-stroke"
+            />
+          </svg>
+          <svg className="hero-wave hero-wave--third" viewBox="0 0 2400 160" preserveAspectRatio="none">
+            <path
+              d="M0 125Q150 95 300 125T600 125T900 125T1200 125T1500 125T1800 125T2100 125T2400 125"
+              vectorEffect="non-scaling-stroke"
+            />
+          </svg>
+        </div>
+      </div>
 
-              {/* Typing Titles */}
-              <div className="h-20">
-                <p className="text-2xl sm:text-3xl font-semibold min-h-12 text-[#E5E7EB]">
-                  {displayedText}
-                  <span className="animate-pulse">|</span>
-                </p>
-              </div>
+      <div className="hero container">
+        <div className="hero-copy">
+          <span className="eyebrow">SQA Engineer · Islamabad, Pakistan</span>
+          <h1 className="hero-title">Hi, I&apos;m Muhammad Athar Ehsan.</h1>
+          <p>
+            I test and automate web applications using Playwright, Cypress, and Selenium, backed by MERN Stack
+            development skills.
+          </p>
 
-              {/* Paragraph */}
-              <p className="text-[#9CA3AF] text-lg max-w-xl leading-snug text-justify">
-                SQA Engineer with a software engineering background and hands-on experience in manual and automated
-                testing using Playwright, Cypress, and Selenium. Skilled in test-case design, functional and regression
-                testing, API testing with Postman, and defect tracking. Experienced in building end-to-end test automation
-                suites with TypeScript and reusable page objects, alongside MERN Stack development and Agile practices
-                for delivering reliable, high-quality software.
-              </p>
-            </div>
+          <div className="hero-buttons">
+            <a className="button button-primary" href="#projects">
+              View Projects
+            </a>
+            <a className="button button-secondary" href="/M_Athar_Ehsan_s_Resume.pdf" download>
+              Download Resume
+            </a>
+          </div>
 
-            {/* Social & Tech Stack */}
-            <div className="flex flex-col lg:flex-row gap-20">
-              {/* Social Links */}
-              <div>
-                <p className="text-lg font-semibold text-gray-400 uppercase mb-3 font-sans tracking-widest">Find me on</p>
-                <div className="grid grid-cols-2 gap-4 w-fit">
-                  {socialLinks.map((link) => {
-                    const Icon = link.icon;
-                    return (
-                      <a
-                        key={link.label}
-                        href={link.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-11 h-11 bg-[#2563EB]/20 rounded-lg flex items-center justify-center text-[#38BDF8] hover:bg-[#2563EB] hover:text-[#E5E7EB] transition-all hover:scale-110"
-                        aria-label={link.label}
-                        title={link.label}
-                      >
-                        <Icon size={20} />
-                      </a>
-                    );
-                  })}
-                </div>
-              </div>
+          <div className="social-links" aria-label="Social links">
+            {socialLinks.map(({ label, href, icon: Icon }) => (
+              <a
+                className="text-link"
+                href={href}
+                key={label}
+                target={href.startsWith('http') ? '_blank' : undefined}
+                rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+              >
+                <Icon size={17} aria-hidden="true" />
+                {label}
+              </a>
+            ))}
+          </div>
+        </div>
 
-              {/* Tech Stack */}
-              <div>
-                <p className="text-lg font-semibold text-gray-400 uppercase mb-3 font-sans tracking-widest">Tech Stack</p>
-                <div className="grid grid-cols-2 gap-4 w-fit">
-                  {techStack.map((tech) => (
-                    <div
-                      key={tech.name}
-                      className="px-3 py-2 bg-[#2563EB]/10 border border-[#2563EB]/30 rounded-lg flex items-center gap-2 hover:border-[#38BDF8] transition-colors"
-                    >
-                      <span className="text-lg">{tech.icon}</span>
-                      <span className="text-sm text-[#E5E7EB]">{tech.name}</span>
-                    </div>
-                  ))}
+        <div className="hero-media">
+          <div className="hero-photo-entrance">
+            <div className="hero-photo-float">
+              <div className="hero-photo-hover">
+                <div className="hero-photo-ring">
+                  <div className="hero-photo-ring-spin" aria-hidden="true" />
+                  <div className="hero-photo-frame">
+                    <Image
+                      src="/profile_placeholder.png"
+                      alt="Muhammad Athar Ehsan"
+                      fill
+                      priority
+                      sizes="(max-width: 700px) 320px, 320px"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Right Side - Profile Image */}
-          <div className="flex justify-start md:pl-12 lg:pl-9">
-            <div className="relative w-[19rem] sm:w-[23rem] md:w-[30rem] h-100 sm:h-110 md:h-[40rem] rounded-2xl overflow-hidden border border-[#2563EB]/30">
-              <img
-                src="/profile-placeholder.png"
-                alt="Profile"
-                className="w-full h-full object-cover"
-              />
-            </div>
+          <div className="test-window" aria-hidden="true">
+            <div className="test-window-title">sample-test.spec.ts</div>
+            <ul className="test-window-list">
+              {['User can log in', 'Search returns results', 'Checkout completes'].map((test) => (
+                <li className="test-check" key={test}>
+                  <Check size={14} aria-hidden="true" />
+                  <span>{test}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>

@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="620" viewBox="0 0 1200 620" fill="none">
+  <rect width="1200" height="620" rx="28" fill="#0B1020"/>
+
+  <rect x="24" y="24" width="530" height="448" rx="18" fill="#17102E" stroke="#4A3A7A" stroke-width="2"/>
+  <path d="M24 78H554" stroke="#4A3A7A" stroke-width="2"/>
+  <circle cx="54" cy="51" r="7" fill="#F87171"/>
+  <circle cx="78" cy="51" r="7" fill="#FBBF24"/>
+  <circle cx="102" cy="51" r="7" fill="#4ADE80"/>
+  <text x="132" y="58" fill="#D9CCFA" font-family="ui-monospace, monospace" font-size="21">darussalam.spec.ts</text>
+
+  <rect x="48" y="105" width="482" height="48" rx="9" fill="#21183D"/>
+  <text x="68" y="137" fill="#C9B6FB" font-family="ui-monospace, monospace" font-size="19">describe('bookstore purchase flow')</text>
+
+  <g font-family="ui-sans-serif, system-ui, sans-serif" font-size="24">
+    <circle cx="76" cy="202" r="14" fill="#143A31"/>
+    <path d="M69 202l5 5 10-11" stroke="#4ADE80" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+    <text x="108" y="210" fill="#F4F2FA">Authentication</text>
+
+    <circle cx="76" cy="269" r="14" fill="#143A31"/>
+    <path d="M69 269l5 5 10-11" stroke="#4ADE80" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+    <text x="108" y="277" fill="#F4F2FA">Product Search</text>
+
+    <circle cx="76" cy="336" r="14" fill="#143A31"/>
+    <path d="M69 336l5 5 10-11" stroke="#4ADE80" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+    <text x="108" y="344" fill="#F4F2FA">Cart</text>
+
+    <circle cx="76" cy="403" r="14" fill="#143A31"/>
+    <path d="M69 403l5 5 10-11" stroke="#4ADE80" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+    <text x="108" y="411" fill="#F4F2FA">Checkout</text>
+  </g>
+  <path d="M340 194h164M340 261h125M340 328h150M340 395h138" stroke="#5B4A82" stroke-linecap="round" stroke-width="8" opacity=".55"/>
+  <path d="M340 212h112M340 279h150M340 346h96M340 413h164" stroke="#8B5CF6" stroke-linecap="round" stroke-width="5" opacity=".62"/>
+
+  <rect x="578" y="24" width="598" height="448" rx="18" fill="#F7F5FC" stroke="#6D5A9B" stroke-width="2"/>
+  <path d="M578 78h598" stroke="#D8D2E5" stroke-width="2"/>
+  <circle cx="608" cy="51" r="7" fill="#F87171"/>
+  <circle cx="632" cy="51" r="7" fill="#FBBF24"/>
+  <circle cx="656" cy="51" r="7" fill="#4ADE80"/>
+  <rect x="698" y="37" width="340" height="28" rx="14" fill="#E9E5F0"/>
+  <text x="718" y="57" fill="#625B70" font-family="ui-sans-serif, system-ui, sans-serif" font-size="15">bookstore.local</text>
+
+  <rect x="580" y="80" width="594" height="70" fill="#241C3D"/>
+  <rect x="610" y="100" width="34" height="34" rx="8" fill="#8B5CF6"/>
+  <path d="M619 109h16M619 116h16M619 123h11" stroke="#F4F2FA" stroke-linecap="round" stroke-width="2"/>
+  <text x="658" y="122" fill="#FFFFFF" font-family="ui-sans-serif, system-ui, sans-serif" font-size="24" font-weight="700">Darussalam Bookstore</text>
+  <text x="1052" y="120" fill="#D9CCFA" font-family="ui-sans-serif, system-ui, sans-serif" font-size="16">Books</text>
+  <path d="M1120 108h22v20h-22zM1124 108a7 7 0 0 1 14 0" stroke="#D9CCFA" stroke-linecap="round" stroke-width="2"/>
+
+  <text x="610" y="185" fill="#241C3D" font-family="ui-sans-serif, system-ui, sans-serif" font-size="19" font-weight="700">Browse the collection</text>
+
+  <g>
+    <rect x="610" y="205" width="150" height="166" rx="10" fill="#E9E3F7"/>
+    <rect x="648" y="220" width="74" height="96" rx="5" fill="#3D2D64"/>
+    <rect x="654" y="226" width="62" height="84" rx="3" stroke="#C9B6FB" stroke-width="2"/>
+    <path d="M667 249h36M667 258h36M667 267h36M667 276h36" stroke="#D9CCFA" stroke-linecap="round" stroke-width="3"/>
+    <path d="M677 291h16" stroke="#4ADE80" stroke-linecap="round" stroke-width="3"/>
+    <text x="622" y="344" fill="#342A49" font-family="ui-sans-serif, system-ui, sans-serif" font-size="15" font-weight="600">Faith &amp; Practice</text>
+    <circle cx="735" cy="344" r="5" fill="#8B5CF6"/>
+
+    <rect x="782" y="205" width="150" height="166" rx="10" fill="#E9E3F7"/>
+    <rect x="820" y="220" width="74" height="96" rx="5" fill="#1C6257"/>
+    <rect x="826" y="226" width="62" height="84" rx="3" stroke="#86EFAC" stroke-width="2"/>
+    <path d="M857 238l9 15h-18zM857 264l13 22h-26z" fill="#4ADE80" opacity=".9"/>
+    <path d="M841 295h32" stroke="#C9F5D7" stroke-linecap="round" stroke-width="3"/>
+    <text x="795" y="344" fill="#342A49" font-family="ui-sans-serif, system-ui, sans-serif" font-size="15" font-weight="600">Children&apos;s Stories</text>
+    <circle cx="907" cy="344" r="5" fill="#8B5CF6"/>
+
+    <rect x="954" y="205" width="190" height="166" rx="10" fill="#E9E3F7"/>
+    <rect x="1012" y="220" width="74" height="96" rx="5" fill="#68412D"/>
+    <rect x="1018" y="226" width="62" height="84" rx="3" stroke="#F3C98B" stroke-width="2"/>
+    <circle cx="1049" cy="263" r="16" stroke="#F3C98B" stroke-width="3"/>
+    <path d="M1049 242v42M1028 263h42" stroke="#F3C98B" stroke-width="2" opacity=".9"/>
+    <text x="974" y="344" fill="#342A49" font-family="ui-sans-serif, system-ui, sans-serif" font-size="15" font-weight="600">Daily Guidance</text>
+    <circle cx="1118" cy="344" r="5" fill="#8B5CF6"/>
+  </g>
+
+  <path d="M610 399h534" stroke="#D8D2E5" stroke-width="2"/>
+  <rect x="610" y="414" width="130" height="36" rx="9" fill="#5B21B6"/>
+  <text x="631" y="438" fill="#FFFFFF" font-family="ui-sans-serif, system-ui, sans-serif" font-size="16" font-weight="600">Explore books</text>
+  <path d="M1092 423h28M1106 411v24" stroke="#8B5CF6" stroke-linecap="round" stroke-width="3"/>
+
+  <rect x="24" y="496" width="1152" height="100" rx="18" fill="#141A2C" stroke="#2D3651" stroke-width="2"/>
+  <g font-family="ui-sans-serif, system-ui, sans-serif" font-size="21" font-weight="600">
+    <rect x="56" y="519" width="252" height="54" rx="12" fill="#21183D"/>
+    <text x="91" y="553" fill="#D9CCFA">Write Tests</text>
+
+    <path d="M332 546h92m-12-12 12 12-12 12" stroke="#8B5CF6" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+
+    <rect x="452" y="519" width="306" height="54" rx="12" fill="#1C2C31"/>
+    <text x="483" y="553" fill="#86EFAC">Run in Browsers</text>
+
+    <path d="M782 546h92m-12-12 12 12-12 12" stroke="#8B5CF6" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+
+    <rect x="902" y="519" width="236" height="54" rx="12" fill="#21183D"/>
+    <text x="972" y="553" fill="#D9CCFA">Report</text>
+  </g>
+</svg>

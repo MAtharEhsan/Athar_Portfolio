@@ -1,149 +1,261 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { Menu, X, Github, Linkedin, Mail, MessageCircle } from 'lucide-react';
-import Image from 'next/image';
+import { useEffect, useRef, useState, type MouseEvent } from 'react';
+import { Moon, Sun } from 'lucide-react';
+import { useTheme } from 'next-themes';
+
+const links = [
+  { label: 'Projects', href: '#projects' },
+  { label: 'Experience', href: '#experience' },
+  { label: 'Skills', href: '#skills' },
+  { label: 'Education', href: '#education' },
+  { label: 'Contact', href: '#contact' },
+];
+
+const resumeHref = '/M_Athar_Ehsan_s_Resume.pdf';
+const resumeFilename = 'M_Athar_Ehsan_s_Resume.pdf';
 
 export function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [isCompact, setIsCompact] = useState(false);
+  const [activeSection, setActiveSection] = useState<string | null>(null);
+  const [hoveredLink, setHoveredLink] = useState<string | null>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const { resolvedTheme, setTheme } = useTheme();
+  const isDark = mounted && resolvedTheme === 'dark';
+
+  useEffect(() => setMounted(true), []);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+    const updateProgress = () => {
+      const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+      setScrollProgress(
+        scrollableHeight > 0 ? Math.min(Math.max(window.scrollY / scrollableHeight, 0), 1) : 0
+      );
+      setIsCompact(window.scrollY > 40);
+    };
 
-      const sections = ['home', 'features', 'projects', 'resume', 'contact'];
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          if (rect.top <= 100 && rect.bottom >= 100) {
-            setActiveSection(section);
-            break;
+    updateProgress();
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    window.addEventListener('resize', updateProgress);
+
+    return () => {
+      window.removeEventListener('scroll', updateProgress);
+      window.removeEventListener('resize', updateProgress);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!('IntersectionObserver' in window)) {
+      return;
+    }
+
+    const sections = links
+      .map(({ href }) => document.querySelector<HTMLElement>(href))
+      .filter((section): section is HTMLElement => section !== null);
+    const visibleSections = new Map<Element, IntersectionObserverEntry>();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            visibleSections.set(entry.target, entry);
+          } else {
+            visibleSections.delete(entry.target);
           }
-        }
+        });
+
+        const currentSection = [...visibleSections.values()].sort(
+          (first, second) => second.intersectionRatio - first.intersectionRatio
+        )[0];
+
+        setActiveSection(currentSection ? `#${currentSection.target.id}` : null);
+      },
+      { rootMargin: '-88px 0px -55% 0px', threshold: [0, 0.1, 0.25, 0.5] }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!menuOpen) {
+      return;
+    }
+
+    const originalOverflow = document.body.style.overflow;
+    const originalPaddingRight = document.body.style.paddingRight;
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+    document.body.style.overflow = 'hidden';
+
+    if (scrollbarWidth > 0) {
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
+    }
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      document.body.style.paddingRight = originalPaddingRight;
+    };
+  }, [menuOpen]);
+
+  useEffect(() => {
+    if (!menuOpen) {
+      return;
+    }
+
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setMenuOpen(false);
+        menuButtonRef.current?.focus();
+      }
+    };
+    const closeOnDesktopResize = () => {
+      if (window.matchMedia('(min-width: 960px)').matches) {
+        setMenuOpen(false);
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    document.addEventListener('keydown', closeOnEscape);
+    window.addEventListener('resize', closeOnDesktopResize);
+    return () => {
+      document.removeEventListener('keydown', closeOnEscape);
+      window.removeEventListener('resize', closeOnDesktopResize);
+    };
+  }, [menuOpen]);
 
-  const scrollToSection = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-    setIsOpen(false);
+  const closeMenu = () => setMenuOpen(false);
+  const hoveredIndex = links.findIndex((link) => link.href === hoveredLink);
+  const activeIndex = links.findIndex((link) => link.href === activeSection);
+  const indicatorIndex = hoveredIndex >= 0 ? hoveredIndex : activeIndex;
+
+  const scrollToTop = (event: MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    closeMenu();
+    window.scrollTo({
+      top: 0,
+      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+    });
   };
 
-  const navLinks = [
-    { label: 'Home', id: 'home' },
-    { label: 'Features', id: 'features' },
-    { label: 'Projects', id: 'projects' },
-    { label: 'Resume', id: 'resume' },
-    { label: 'Contact', id: 'contact' },
-  ];
-
-  const socialLinks = [
-    { icon: Github, href: 'https://github.com/MAtharEhsan', label: 'GitHub' },
-    { icon: Linkedin, href: 'https://linkedin.com/in/muhammadatharehsan', label: 'LinkedIn' },
-    { icon: Mail, href: 'mailto:muhammadatharehsan2@gmail.com', label: 'Email' },
-    { icon: MessageCircle, href: 'https://wa.me/923046000182', label: 'WhatsApp' },
-  ];
-
   return (
-    <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-[#0B0F19]/95 backdrop-blur border-b border-[#1F2937]'
-          : 'bg-transparent border-b border-[#1F2937]'
-      }`}
-    >
-      <div className="w-full px-2 sm:px-4 lg:px-16">
-        <div className="flex items-center py-2">
-
-          {/* LEFT MOST — LOGO */}
-          <button
-            onClick={() => scrollToSection('home')}
-            className="hover:opacity-80 transition-opacity"
-          >
-            <Image
-              src="/profile.png"
-              alt="Muhammad Athar Ehsan"
-              width={100}
-              height={100}
-              className="rounded-full"
-              priority
-            />
-          </button>
-
-          {/* FLEX SPACER */}
-          <div className="flex-1" />
-
-          {/* RIGHT MOST — DESKTOP NAV */}
-          <div className="hidden md:flex gap-8">
-            {navLinks.map((link) => (
-              <button
-                key={link.id}
-                onClick={() => scrollToSection(link.id)}
-                className={`text-base font-medium transition-colors ${
-                  activeSection === link.id
-                    ? 'text-[#38BDF8] border-b-2 border-[#38BDF8]'
-                    : 'text-[#E5E7EB] hover:text-[#38BDF8]'
-                }`}
-              >
-                {link.label}
-              </button>
-            ))}
-          </div>
-
-          {/* MOBILE MENU BUTTON */}
-          <button
-            className="md:hidden ml-4 text-[#E5E7EB]"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+    <>
+      <header className={`site-header${isCompact ? ' is-compact' : ''}`}>
+        <div className="scroll-progress" aria-hidden="true">
+          <span style={{ transform: `scaleX(${scrollProgress})` }} />
         </div>
+        <nav className="nav-shell" aria-label="Main navigation">
+          <a className="brand" href="#home" onClick={scrollToTop}>
+            <span>Athar Ehsan</span>
+            <svg
+              className="brand-qa-underline"
+              viewBox="0 0 200 12"
+              preserveAspectRatio="none"
+              aria-hidden="true"
+            >
+              <path d="M 2 4 L 10 11 L 24 1 H 198" />
+            </svg>
+          </a>
+          <span className="nav-divider" aria-hidden="true" />
 
-        {/* MOBILE MENU */}
-        {isOpen && (
-          <div className="md:hidden bg-[#111827] border-t border-[#1F2937]">
-            <div className="px-3 pt-3 pb-4 space-y-2">
-              {navLinks.map((link) => (
-                <button
-                  key={link.id}
-                  onClick={() => scrollToSection(link.id)}
-                  className="block w-full text-left px-3 py-2 text-[#E5E7EB] hover:bg-[#1F2937] rounded transition-colors"
+          <div className="nav-actions">
+            <div className="nav-links">
+              {links.map((link) => (
+                <a
+                  aria-current={activeSection === link.href ? 'location' : undefined}
+                  className={`nav-link${activeSection === link.href ? ' is-active' : ''}`}
+                  href={link.href}
+                  key={link.href}
+                  onBlur={() => setHoveredLink(null)}
+                  onFocus={() => setHoveredLink(link.href)}
+                  onMouseEnter={() => setHoveredLink(link.href)}
+                  onMouseLeave={() => setHoveredLink(null)}
                 >
                   {link.label}
-                </button>
+                </a>
               ))}
-
-              <div className="border-t border-[#1F2937] pt-3 mt-3">
-                <p className="text-xs font-semibold text-[#9CA3AF] px-3 mb-2 uppercase tracking-wider">
-                  Find me on
-                </p>
-                <div className="flex gap-2 px-3">
-                  {socialLinks.map((link) => {
-                    const Icon = link.icon;
-                    return (
-                      <a
-                        key={link.label}
-                        href={link.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-9 h-9 bg-[#2563EB]/20 rounded flex items-center justify-center text-[#9CA3AF] hover:text-[#E5E7EB] hover:bg-[#2563EB] transition-colors"
-                      >
-                        <Icon size={18} />
-                      </a>
-                    );
-                  })}
-                </div>
-              </div>
+              <span
+                className="nav-indicator"
+                aria-hidden="true"
+                style={{
+                  opacity: indicatorIndex >= 0 ? 1 : 0,
+                  transform: `translate(${Math.max(indicatorIndex, 0) * 96}px, -50%)`,
+                }}
+              />
             </div>
+
+            <button
+              type="button"
+              className="theme-toggle"
+              aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+              title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+              aria-pressed={isDark}
+              onClick={() => setTheme(isDark ? 'light' : 'dark')}
+            >
+              <span className="theme-toggle-icon">
+                {isDark ? <Sun size={19} aria-hidden="true" /> : <Moon size={19} aria-hidden="true" />}
+              </span>
+            </button>
+
+            <a className="button button-primary navbar-resume" href={resumeHref} download={resumeFilename}>
+              Resume
+            </a>
+
+            <button
+              ref={menuButtonRef}
+              type="button"
+              className={`menu-toggle${menuOpen ? ' is-open' : ''}`}
+              aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+              aria-expanded={menuOpen}
+              aria-controls="mobile-navigation"
+              onClick={() => setMenuOpen((open) => !open)}
+            >
+              <span className="hamburger-icon" aria-hidden="true">
+                <span />
+                <span />
+                <span />
+              </span>
+            </button>
           </div>
-        )}
-      </div>
-    </nav>
+
+          <div
+            className={`mobile-menu${menuOpen ? ' is-open' : ''}`}
+            id="mobile-navigation"
+            aria-hidden={!menuOpen}
+          >
+            {links.map((link) => (
+              <a
+                aria-current={activeSection === link.href ? 'location' : undefined}
+                className={`nav-link mobile-menu-link${activeSection === link.href ? ' is-active' : ''}`}
+                href={link.href}
+                key={link.href}
+                tabIndex={menuOpen ? 0 : -1}
+                onClick={closeMenu}
+              >
+                {link.label}
+              </a>
+            ))}
+            <a
+              className="button button-primary mobile-menu-resume"
+              href={resumeHref}
+              download={resumeFilename}
+              tabIndex={menuOpen ? 0 : -1}
+              onClick={closeMenu}
+            >
+              Download Resume
+            </a>
+          </div>
+        </nav>
+      </header>
+      {menuOpen && (
+        <button
+          type="button"
+          className="mobile-backdrop"
+          aria-label="Close navigation menu"
+          tabIndex={-1}
+          onClick={closeMenu}
+        />
+      )}
+    </>
   );
 }

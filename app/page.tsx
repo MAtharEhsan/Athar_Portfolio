@@ -2,39 +2,41 @@ import { Navbar } from '@/components/navbar';
 import { HeroSection } from '@/components/hero-section';
 import { FeaturesSection } from '@/components/features-section';
 import { ProjectsSection } from '@/components/projects-section';
-import { ResumeSection } from '@/components/resume-section';
+import { ExperienceSection, SkillsSection } from '@/components/resume-section';
 import { ContactSection } from '@/components/contact-section';
 import { Footer } from '@/components/footer';
+import { ScrollRevealObserver } from '@/components/scroll-reveal-observer';
+import { EducationSection } from '@/components/education-section';
 
 export const metadata = {
-  title: "M Athar Ehsan's Portfolio",
+  title: "Muhammad Athar Ehsan's Portfolio",
   description:
-    'Professional portfolio of Muhammad Athar Ehsan - Software Quality Assurance Engineer, Full Stack Developer, and Project Manager. Expertise in MERN stack, test automation, and software quality.',
+    'Software Quality Assurance Engineer specializing in manual and automated testing, with MERN Stack development experience.',
   keywords: [
-    'Software Engineer',
-    'QA Engineer',
-    'Full Stack Developer',
-    'MERN Stack',
+    'SQA Engineer',
     'Cypress',
-    'Selenium',
-    'Project Manager',
+    'Playwright',
+    'MERN Stack',
   ],
   authors: [{ name: 'Muhammad Athar Ehsan' }],
   openGraph: {
-    title: 'Muhammad Athar Ehsan | Software Engineer & QA Expert',
-    description: 'Professional portfolio showcasing expertise in QA, full-stack development, and project management.',
+    title: 'Muhammad Athar Ehsan | SQA Engineer',
+    description: 'Portfolio showcasing software quality assurance, test automation, and web development.',
     type: 'website',
   },
 };
 
 export default function Home() {
   return (
-    <main className="bg-[#0B0F19] text-[#E5E7EB]">
+    <main>
       <Navbar />
+      <ScrollRevealObserver />
       <HeroSection />
       <FeaturesSection />
       <ProjectsSection />
-      <ResumeSection />
+      <ExperienceSection />
+      <SkillsSection />
+      <EducationSection />
       <ContactSection />
       <Footer />
     </main>

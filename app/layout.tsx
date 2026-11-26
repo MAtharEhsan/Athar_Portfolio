@@ -1,32 +1,19 @@
 import React from "react"
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Inter, Space_Grotesk } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { ThemeProvider } from '@/components/theme-provider'
 import './globals.css'
 
-const _geist = Geist({ subsets: ["latin"] });
-const _geistMono = Geist_Mono({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'], variable: '--font-body' })
+const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-display' })
 
 export const metadata: Metadata = {
-  title: 'Muhammad Athar Ehsan | Software Engineer & QA Expert',
-  description: 'Professional portfolio of Muhammad Athar Ehsan - Software Quality Assurance Engineer, Full Stack Developer, and Project Manager.',
+  title: 'Muhammad Athar Ehsan | SQA Engineer',
+  description: 'Portfolio of Muhammad Athar Ehsan, a Software Quality Assurance Engineer focused on test automation and web development.',
   generator: 'v0.app',
   icons: {
-    icon: [
-      {
-        url: '/logo.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/logo.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/logo.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-logo.png',
+    icon: '/favicon.svg',
   },
 }
 
@@ -37,9 +24,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`font-sans antialiased dark`}>
-        {children}
-        <Analytics />
+      <body className={`${inter.variable} ${spaceGrotesk.variable}`}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          {children}
+          <Analytics />
+        </ThemeProvider>
       </body>
     </html>
   )

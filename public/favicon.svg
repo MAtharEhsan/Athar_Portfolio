@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>Athar Ehsan QA</title>
+  <style>
+    .background { fill: #fbfaff; stroke: #e6e0f5; }
+    .initials { fill: #4c1d95; }
+    .check { stroke: #16a34a; }
+    @media (prefers-color-scheme: dark) {
+      .background { fill: #14121b; stroke: #2d2940; }
+      .initials { fill: #c9b6fb; }
+    }
+  </style>
+  <rect class="background" x="2" y="2" width="60" height="60" rx="16" stroke-width="2" />
+  <text class="initials" x="32" y="39" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" letter-spacing="-2">AE</text>
+  <path class="check" d="M11 46l8 7 11-11h23" fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+</svg>
