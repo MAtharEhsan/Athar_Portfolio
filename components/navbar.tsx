@@ -148,6 +148,10 @@ export function Navbar() {
   const indicatorIndex = hoveredIndex >= 0 ? hoveredIndex : activeIndex;
 
   const scrollToSection = (event: MouseEvent<HTMLAnchorElement>, href: string, sectionId: string) => {
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+      return;
+    }
+
     event.preventDefault();
     closeMenu();
     window.history.pushState(null, '', href);
@@ -157,6 +161,10 @@ export function Navbar() {
   };
 
   const scrollToTop = (event: MouseEvent<HTMLAnchorElement>) => {
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+      return;
+    }
+
     event.preventDefault();
     closeMenu();
     if (window.location.pathname !== '/') {
