@@ -48,35 +48,26 @@ export function Navbar() {
   }, []);
 
   useEffect(() => {
-    if (!('IntersectionObserver' in window)) {
-      return;
-    }
-
     const sections = links
       .map(({ sectionId }) => document.getElementById(sectionId))
       .filter((section): section is HTMLElement => section !== null);
-    const visibleSections = new Map<Element, IntersectionObserverEntry>();
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            visibleSections.set(entry.target, entry);
-          } else {
-            visibleSections.delete(entry.target);
-          }
-        });
 
-        const currentSection = [...visibleSections.values()].sort(
-          (first, second) => second.intersectionRatio - first.intersectionRatio
-        )[0];
+    const updateActiveSection = () => {
+      const headerBottom = document.querySelector('.site-header')?.getBoundingClientRect().bottom ?? 88;
+      const currentSection = [...sections]
+        .reverse()
+        .find((section) => section.getBoundingClientRect().top <= headerBottom);
 
-        setActiveSection(currentSection ? `/${currentSection.target.id}` : null);
-      },
-      { rootMargin: '-88px 0px -55% 0px', threshold: [0, 0.1, 0.25, 0.5] }
-    );
+      setActiveSection(currentSection ? `/${currentSection.id}` : null);
+    };
 
-    sections.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
+    updateActiveSection();
+    window.addEventListener('scroll', updateActiveSection, { passive: true });
+    window.addEventListener('resize', updateActiveSection);
+    return () => {
+      window.removeEventListener('scroll', updateActiveSection);
+      window.removeEventListener('resize', updateActiveSection);
+    };
   }, []);
 
   useEffect(() => {
