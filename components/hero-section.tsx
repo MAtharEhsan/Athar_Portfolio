@@ -39,7 +39,7 @@ export function HeroSection() {
       <div className="hero container">
         <div className="hero-copy">
           <span className="eyebrow">SQA Engineer · Islamabad, Pakistan</span>
-          <h1 className="hero-title">Hi, I&apos;m Muhammad Athar Ehsan.</h1>
+          <h1 className="hero-title">Hi, I&apos;m Muhammad Athar Ehsan</h1>
           <p>
             I test and automate web applications using Playwright, Cypress, and Selenium, backed by MERN Stack
             development skills.
