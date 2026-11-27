@@ -16,18 +16,6 @@ const education = [
       'DevOps',
     ],
   },
-  {
-    date: '2019 – 2021',
-    program: 'FSc Pre-Engineering',
-    institution: 'Punjab Group of Colleges, Sargodha',
-    coursework: ['Physics', 'Chemistry', 'Mathematics', 'English', 'Islamic Studies', 'Urdu'],
-  },
-  {
-    date: '2017 – 2019',
-    program: 'Matric in Science',
-    institution: 'Govt. High School #01, Sillanwali (Sargodha)',
-    coursework: ['Physics', 'Chemistry', 'Biology', 'Mathematics', 'English', 'Islamic Studies'],
-  },
 ];
 
 export function EducationSection() {
