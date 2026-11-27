@@ -52,7 +52,9 @@ export function EducationSection() {
                   <p className="education-institution">{item.institution}</p>
                 </div>
                 <span className="education-toggle-icon" aria-hidden="true">
-                  <ChevronDown size={20} />
+                  <ChevronDown className="education-chevron" size={20} />
+                  <ChevronDown className="education-chevron" size={20} />
+                  <ChevronDown className="education-chevron" size={20} />
                 </span>
               </summary>
               <div className="education-coursework">

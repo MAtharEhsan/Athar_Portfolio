@@ -945,14 +945,51 @@ textarea {
 }
 
 .education-toggle-icon {
-  display: inline-flex;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   flex: 0 0 auto;
   color: var(--accent);
   transition: transform 200ms ease;
 }
 
+.education-chevron {
+  display: block;
+  animation: education-chevron-flow 1.2s ease-in-out infinite;
+}
+
+.education-chevron + .education-chevron {
+  margin-top: -11px;
+}
+
+.education-chevron:nth-child(2) {
+  animation-delay: 150ms;
+}
+
+.education-chevron:nth-child(3) {
+  animation-delay: 300ms;
+}
+
 .education-item[open] .education-toggle-icon {
   transform: rotate(180deg);
+}
+
+.education-item[open] .education-chevron {
+  animation: none;
+  opacity: 1;
+}
+
+@keyframes education-chevron-flow {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: translateY(-2px);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateY(3px);
+  }
 }
 
 .education-date-pill {
