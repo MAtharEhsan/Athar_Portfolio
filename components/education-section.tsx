@@ -14,11 +14,12 @@ const education = [
           'Software Project Management',
           'Software Design and Architecture',
           'Software Requirement Engineering',
+          'Human Computer Interaction',
         ],
       },
       {
         category: 'Computing Foundations',
-        courses: ['Data Structures and Algorithms', 'Object Oriented Programming'],
+        courses: ['Data Structures and Algorithms', 'Object Oriented Programming', 'Database', 'Operating Systems'],
       },
       {
         category: 'Development & Technologies',
@@ -30,7 +31,7 @@ const education = [
       },
       {
         category: 'Business & Languages',
-        courses: ['Entrepreneurship', 'Chinese'],
+        courses: ['Communication Skills', 'Digital Marketing & E-commerce', 'Entrepreneurship', 'Chinese'],
       },
     ],
   },
