@@ -145,7 +145,7 @@ export function Navbar() {
   const closeMenu = () => setMenuOpen(false);
   const hoveredIndex = links.findIndex((link) => link.href === hoveredLink);
   const activeIndex = links.findIndex((link) => link.href === activeSection);
-  const indicatorIndex = hoveredIndex >= 0 ? hoveredIndex : activeIndex;
+  const indicatorIndex = activeIndex >= 0 ? activeIndex : hoveredIndex;
 
   const scrollToSection = (event: MouseEvent<HTMLAnchorElement>, href: string, sectionId: string) => {
     if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
