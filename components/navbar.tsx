@@ -5,11 +5,11 @@ import { Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
 
 const links = [
-  { label: 'Projects', href: '#projects' },
-  { label: 'Experience', href: '#experience' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'Education', href: '#education' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Projects', href: '/projects', sectionId: 'projects' },
+  { label: 'Experience', href: '/experience', sectionId: 'experience' },
+  { label: 'Skills', href: '/skills', sectionId: 'skills' },
+  { label: 'Education', href: '/education', sectionId: 'education' },
+  { label: 'Contact', href: '/contact', sectionId: 'contact' },
 ];
 
 const resumeHref = '/M_Athar_Ehsan_s_Resume.pdf';
@@ -53,7 +53,7 @@ export function Navbar() {
     }
 
     const sections = links
-      .map(({ href }) => document.querySelector<HTMLElement>(href))
+      .map(({ sectionId }) => document.getElementById(sectionId))
       .filter((section): section is HTMLElement => section !== null);
     const visibleSections = new Map<Element, IntersectionObserverEntry>();
     const observer = new IntersectionObserver(
@@ -70,13 +70,31 @@ export function Navbar() {
           (first, second) => second.intersectionRatio - first.intersectionRatio
         )[0];
 
-        setActiveSection(currentSection ? `#${currentSection.target.id}` : null);
+        setActiveSection(currentSection ? `/${currentSection.target.id}` : null);
       },
       { rootMargin: '-88px 0px -55% 0px', threshold: [0, 0.1, 0.25, 0.5] }
     );
 
     sections.forEach((section) => observer.observe(section));
     return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const scrollToCurrentPath = () => {
+      const sectionId = window.location.pathname.slice(1);
+      if (sectionId) {
+        document.getElementById(sectionId)?.scrollIntoView({ behavior: 'auto' });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'auto' });
+      }
+    };
+
+    if (window.location.pathname !== '/') {
+      requestAnimationFrame(scrollToCurrentPath);
+    }
+
+    window.addEventListener('popstate', scrollToCurrentPath);
+    return () => window.removeEventListener('popstate', scrollToCurrentPath);
   }, []);
 
   useEffect(() => {
@@ -129,9 +147,21 @@ export function Navbar() {
   const activeIndex = links.findIndex((link) => link.href === activeSection);
   const indicatorIndex = hoveredIndex >= 0 ? hoveredIndex : activeIndex;
 
+  const scrollToSection = (event: MouseEvent<HTMLAnchorElement>, href: string, sectionId: string) => {
+    event.preventDefault();
+    closeMenu();
+    window.history.pushState(null, '', href);
+    document.getElementById(sectionId)?.scrollIntoView({
+      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+    });
+  };
+
   const scrollToTop = (event: MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
     closeMenu();
+    if (window.location.pathname !== '/') {
+      window.history.pushState(null, '', '/');
+    }
     window.scrollTo({
       top: 0,
       behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
@@ -145,7 +175,7 @@ export function Navbar() {
           <span style={{ transform: `scaleX(${scrollProgress})` }} />
         </div>
         <nav className="nav-shell" aria-label="Main navigation">
-          <a className="brand" href="#home" onClick={scrollToTop}>
+          <a className="brand" href="/" onClick={scrollToTop}>
             <span>Athar Ehsan</span>
             <svg
               className="brand-qa-underline"
@@ -166,6 +196,7 @@ export function Navbar() {
                   className={`nav-link${activeSection === link.href ? ' is-active' : ''}`}
                   href={link.href}
                   key={link.href}
+                  onClick={(event) => scrollToSection(event, link.href, link.sectionId)}
                   onBlur={() => setHoveredLink(null)}
                   onFocus={() => setHoveredLink(link.href)}
                   onMouseEnter={() => setHoveredLink(link.href)}
@@ -230,7 +261,7 @@ export function Navbar() {
                 href={link.href}
                 key={link.href}
                 tabIndex={menuOpen ? 0 : -1}
-                onClick={closeMenu}
+                onClick={(event) => scrollToSection(event, link.href, link.sectionId)}
               >
                 {link.label}
               </a>

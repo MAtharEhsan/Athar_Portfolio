@@ -46,7 +46,7 @@ export function HeroSection() {
           </p>
 
           <div className="hero-buttons">
-            <a className="button button-primary" href="#projects">
+            <a className="button button-primary" href="/projects">
               View Projects
             </a>
             <a className="button button-secondary" href="/M_Athar_Ehsan_s_Resume.pdf" download>

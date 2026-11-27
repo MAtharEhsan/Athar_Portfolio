@@ -1,12 +1,4 @@
-import { Navbar } from '@/components/navbar';
-import { HeroSection } from '@/components/hero-section';
-import { FeaturesSection } from '@/components/features-section';
-import { ProjectsSection } from '@/components/projects-section';
-import { ExperienceSection, SkillsSection } from '@/components/resume-section';
-import { ContactSection } from '@/components/contact-section';
-import { Footer } from '@/components/footer';
-import { ScrollRevealObserver } from '@/components/scroll-reveal-observer';
-import { EducationSection } from '@/components/education-section';
+import { PortfolioPage } from '@/components/portfolio-page';
 
 export const metadata = {
   title: "Muhammad Athar Ehsan's Portfolio",
@@ -27,18 +19,5 @@ export const metadata = {
 };
 
 export default function Home() {
-  return (
-    <main>
-      <Navbar />
-      <ScrollRevealObserver />
-      <HeroSection />
-      <FeaturesSection />
-      <ProjectsSection />
-      <ExperienceSection />
-      <SkillsSection />
-      <EducationSection />
-      <ContactSection />
-      <Footer />
-    </main>
-  );
+  return <PortfolioPage />;
 }
