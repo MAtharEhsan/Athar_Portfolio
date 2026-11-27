@@ -6,17 +6,32 @@ const education = [
     program: 'BS Software Engineering',
     institution: 'COMSATS University Islamabad',
     coursework: [
-      'Software Quality Engineering',
-      'Software Testing',
-      'Software Project Management',
-      'Software Design and Architecture',
-      'Software Requirement Engineering',
-      'Data Structures and Algorithms',
-      'Object Oriented Programming',
-      'Mobile Application and Development',
-      'Topic in Software Engineering I - MERN Stack',
-      'Topic in Software Engineering II - DevOps',
-      'Entrepreneurship',
+      {
+        category: 'Software Engineering',
+        courses: [
+          'Software Quality Engineering',
+          'Software Testing',
+          'Software Project Management',
+          'Software Design and Architecture',
+          'Software Requirement Engineering',
+        ],
+      },
+      {
+        category: 'Computing Foundations',
+        courses: ['Data Structures and Algorithms', 'Object Oriented Programming'],
+      },
+      {
+        category: 'Development & Technologies',
+        courses: [
+          'Mobile Application and Development',
+          'Topic in Software Engineering I - MERN Stack',
+          'Topic in Software Engineering II - DevOps',
+        ],
+      },
+      {
+        category: 'Business & Languages',
+        courses: ['Entrepreneurship', 'Chinese'],
+      },
     ],
   },
 ];
@@ -33,13 +48,20 @@ export function EducationSection() {
               <h3 className="education-program">{item.program}</h3>
               <p className="education-institution">{item.institution}</p>
               <div className="education-coursework">
-                <h4>Coursework</h4>
-                <div className="education-course-list">
-                  {item.coursework.map((course) => (
-                    <span className="education-course-chip" key={course}>
-                      <Check size={14} aria-hidden="true" />
-                      {course}
-                    </span>
+                <h4>Relevant Coursework</h4>
+                <div className="education-course-groups">
+                  {item.coursework.map((group) => (
+                    <div className="education-course-group" key={group.category}>
+                      <h5>{group.category}</h5>
+                      <div className="education-course-list">
+                        {group.courses.map((course) => (
+                          <span className="education-course-chip" key={course}>
+                            <Check size={14} aria-hidden="true" />
+                            {course}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
                   ))}
                 </div>
               </div>

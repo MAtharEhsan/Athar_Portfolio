@@ -955,6 +955,23 @@ textarea {
   font-weight: 700;
 }
 
+.education-course-groups {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px 24px;
+}
+
+.education-course-group {
+  min-width: 0;
+}
+
+.education-course-group h5 {
+  margin: 0 0 8px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
 .education-course-list {
   display: flex;
   flex-wrap: wrap;
@@ -1431,7 +1448,8 @@ textarea {
 
   .project-grid,
   .skills-grid,
-  .education-grid {
+  .education-grid,
+  .education-course-groups {
     grid-template-columns: minmax(0, 1fr);
   }
 
