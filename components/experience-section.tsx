@@ -3,6 +3,7 @@ const experience = [
     date: 'Oct 2026 – Present',
     role: 'SQA Engineer',
     company: 'Oak Street Technologies',
+    companyUrl: 'https://9ostech.com/',
     description:
       'Functional, regression, and API testing, with defect tracking alongside developers.',
   },
@@ -17,6 +18,7 @@ const experience = [
     date: 'Feb – Apr 2026',
     role: 'SQA Automation Engineer',
     company: 'Techfy (Remote)',
+    companyUrl: 'https://techfy.io/',
     description:
       'Built a Playwright and TypeScript end-to-end suite for the Click2Deploy platform.',
   },
@@ -66,7 +68,19 @@ export function ExperienceSection() {
               <div className="experience-date">{item.date}</div>
               <div>
                 <h3 className="experience-role">
-                  {item.role} <span className="experience-company">· {item.company}</span>
+                  {item.role} ·{' '}
+                  {item.companyUrl ? (
+                    <a
+                      className="experience-company"
+                      href={item.companyUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {item.company}
+                    </a>
+                  ) : (
+                    <span className="experience-company">{item.company}</span>
+                  )}
                 </h3>
                 <p className="experience-description">{item.description}</p>
               </div>

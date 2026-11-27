@@ -921,6 +921,40 @@ textarea {
   flex-direction: column;
 }
 
+.education-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.education-summary::-webkit-details-marker {
+  display: none;
+}
+
+.education-summary:focus-visible {
+  border-radius: 4px;
+  outline: 2px solid var(--accent);
+  outline-offset: 6px;
+}
+
+.education-heading {
+  min-width: 0;
+}
+
+.education-toggle-icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+  color: var(--accent);
+  transition: transform 200ms ease;
+}
+
+.education-item[open] .education-toggle-icon {
+  transform: rotate(180deg);
+}
+
 .education-date-pill {
   width: fit-content;
   padding: 5px 11px;

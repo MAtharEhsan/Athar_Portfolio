@@ -1,4 +1,4 @@
-import { Check } from 'lucide-react';
+import { Check, ChevronDown } from 'lucide-react';
 
 const education = [
   {
@@ -44,10 +44,17 @@ export function EducationSection() {
         <h2 className="section-title">Education</h2>
         <div className="education-grid">
           {education.map((item) => (
-            <article className="card education-item" key={item.program}>
-              <span className="education-date-pill">{item.date}</span>
-              <h3 className="education-program">{item.program}</h3>
-              <p className="education-institution">{item.institution}</p>
+            <details className="card education-item" key={item.program}>
+              <summary className="education-summary">
+                <div className="education-heading">
+                  <span className="education-date-pill">{item.date}</span>
+                  <h3 className="education-program">{item.program}</h3>
+                  <p className="education-institution">{item.institution}</p>
+                </div>
+                <span className="education-toggle-icon" aria-hidden="true">
+                  <ChevronDown size={20} />
+                </span>
+              </summary>
               <div className="education-coursework">
                 <h4>Relevant Coursework</h4>
                 <div className="education-course-groups">
@@ -66,7 +73,7 @@ export function EducationSection() {
                   ))}
                 </div>
               </div>
-            </article>
+            </details>
           ))}
         </div>
       </div>
