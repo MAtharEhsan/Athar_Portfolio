@@ -54,9 +54,10 @@ export function Navbar() {
 
     const updateActiveSection = () => {
       const headerBottom = document.querySelector('.site-header')?.getBoundingClientRect().bottom ?? 88;
+      const activationLine = headerBottom + window.innerHeight * 0.25;
       const currentSection = [...sections]
         .reverse()
-        .find((section) => section.getBoundingClientRect().top <= headerBottom);
+        .find((section) => section.getBoundingClientRect().top <= activationLine);
 
       setActiveSection(currentSection ? `/${currentSection.id}` : null);
     };
