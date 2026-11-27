@@ -146,6 +146,7 @@ export function Navbar() {
 
     event.preventDefault();
     closeMenu();
+    setActiveSection(href);
     window.history.pushState(null, '', href);
     document.getElementById(sectionId)?.scrollIntoView({
       behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
